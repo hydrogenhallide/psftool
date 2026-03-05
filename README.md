@@ -26,22 +26,37 @@ Glyphs are arranged in a grid of 16 per row. Each cell is separated by a 1px red
 - **Red** pixel = cell separator (don't draw on these)
 
 ## So, how do i make a font?
-
 ```sh
-# 1. Get a font from your system
-cp /usr/share/consolefonts/Lat15-Fixed16.psf.gz /tmp/
-gunzip /tmp/Lat15-Fixed16.psf.gz
+# 1. Make the template
+psftool --new --width <width> --height <height> --glyphs <glyphs> <font>.bmp
 
-# 2. Convert to BMP
-psftool /tmp/Lat15-Fixed16.psf
+# 2. Edit the .json file (optional)
 
-# 3. Open /tmp/Lat15-Fixed16.bmp in GIMP, Krita, etc. and edit glyphs
+# 3. Open <font>.bmp in GIMP, Krita, etc. and edit glyphs
 
 # 4. Convert back
-psftool /tmp/Lat15-Fixed16.bmp
+psftool <font>.bmp
 
 # 5. Load into TTY
-setfont /tmp/Lat15-Fixed16.psf
+setfont <font>
+```
+## How do i edit an existing one?
+```sh
+# 1. Get a font from your system
+cp <font path> <working directory>
+# 1.5. Only if the file you have is a .psf.gz
+gunzip -k <font>
+
+# 2. Convert to BMP
+psftool <font>
+
+# 3. Open <font>.bmp in GIMP, Krita, etc. and edit glyphs
+
+# 4. Convert back
+psftool <font>.bmp
+
+# 5. Load into TTY
+setfont <font>
 ```
 
 ## Notes
