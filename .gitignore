@@ -1,1 +1,7 @@
 /target
+
+# Font files you might be editing (don't accidentally commit system fonts)
+*.psf
+*.psf.gz
+*.bmp
+*.json
